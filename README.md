@@ -22,3 +22,6 @@ Hint: Base64, Hexdump
   > base64 -d "$file" | xxd -r > /home/syauqi/Downloads/nature/image"$i".jpg
   > ((i++))
   > done
+
+- Menambah cronjob dengan format berikut
+  > 14 14 14 2 5 /bin/bash /home/syauqi/Downloads/nomor1.sh
