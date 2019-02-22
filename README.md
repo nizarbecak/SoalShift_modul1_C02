@@ -137,3 +137,4 @@ berikut:
   
   tr sebagai manipulasi text, setiap huruf alfabet ditambahkan dengan jam
   
+  ![soal4](/image_modul1/soal4.png)
