@@ -13,15 +13,17 @@ Hint: Base64, Hexdump
 
 ### Penyelesaian
 - Membuat file .sh dengan isi seperti berikut
-  > #!/bin/bash
-  > 
-  > i=1
-  > 
-  > for file in /home/syauqi/Downloads/nature/*.jpg
-  > do
-  > base64 -d "$file" | xxd -r > /home/syauqi/Downloads/nature/image"$i".jpg
-  > ((i++))
-  > done
+  ```
+  #!/bin/bash
+  
+  i=1
+  
+  for file in /home/syauqi/Downloads/nature/*.jpg
+  do
+  base64 -d "$file" | xxd -r > /home/syauqi/Downloads/nature/image"$i".jpg
+  ((i++))
+  done
+  ```
 
 - Menambah cronjob dengan format berikut
   > 14 14 14 2 5 /bin/bash /home/syauqi/Downloads/nomor1.sh
