@@ -20,10 +20,14 @@ Hint: Base64, Hexdump
   
   for file in /home/syauqi/Downloads/nature/*.jpg
   do
-  base64 -d "$file" | xxd -r > /home/syauqi/Downloads/nature/image"$i".jpg
-  ((i++))
+    base64 -d "$file" | xxd -r > /home/syauqi/Downloads/nature/image"$i".jpg
+    ((i++))
   done
   ```
 
 - Menambah cronjob dengan format berikut
-  > 14 14 14 2 5 /bin/bash /home/syauqi/Downloads/nomor1.sh
+  ```
+  14 14 14 2 5 /bin/bash /home/syauqi/Downloads/nomor1.sh
+  ```
+  
+![soal1](/image_modul1/soal1.png)
