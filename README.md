@@ -1,4 +1,4 @@
-Akhmad Nizar Zulmi (05111640007002)
+Akhmad Nizar Zulmi (05111640007002) <br>
 Ahmad Syauqi (05111740000093)
 
 # SoalShift_modul1_C02
