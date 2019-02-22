@@ -76,3 +76,64 @@ sebagai berikut:
 4. Password yang dihasilkan tidak boleh sama.
 
 ### Penyelesaian
+- Membuat file .sh dengan isi seperti berikut
+  ```
+  #!/bin/bash
+
+  length=12
+  digits=({0..9})
+  lower=({a..z})
+  upper=({A..Z})
+  CharArray=(${digits[*]} ${lower[*]} ${upper[*]})
+  ArrayLength=${#CharArray[*]}
+  password=""
+  for i in `seq 1 $length`
+  do
+    index=$(($RANDOM%$ArrayLength))
+    char=${CharArray[$index]}
+    password=${password}${char}
+  done
+
+  i=1
+
+  while [ -f "/home/syauqi/Downloads/hasil_nomor_3/password$i.txt" ]
+  do
+    ((i++))
+  done
+
+  echo "$password" > /home/syauqi/Downloads/hasil_nomor_3/password"$i".txt
+  ```
+  
+  Loop pertama untuk membuat password<br>
+  Loop kedua untuk menentukan nama file yang harus diubah sebagai penyimpanan dari password yang digenerate<br>
+  
+  ![soal3_1](/image_modul1/soal3_1.png)
+  ![soal3_2](/image_modul1/soal3_2.png)
+  
+## Soal 4
+Lakukan backup file syslog setiap jam dengan format nama file “jam:menit tanggal-
+bulan-tahun”. Isi dari file backup terenkripsi dengan konversi huruf (string
+manipulation) yang disesuaikan dengan jam dilakukannya backup misalkan sebagai
+berikut:
+1. Huruf b adalah alfabet kedua, sedangkan saat ini waktu menunjukkan pukul 12, sehingga huruf b diganti dengan huruf alfabet yang memiliki urutan ke 12+2 = 14.
+2. Hasilnya huruf b menjadi huruf n karena huruf n adalah huruf ke empat belas, dan seterusnya.
+3. setelah huruf z akan kembali ke huruf a
+4. Backup file syslog setiap jam.
+5. dan buatkan juga bash script untuk dekripsinya.
+
+### Penyelesaian
+- Membuat file .sh dengan isi seperti berikut
+  ```
+  #!/bin/bash
+
+  kecil="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+  kapital="ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+  jam=`date +"%H"`
+  nama=`date +"%H:%M %d-%m-%y"`
+
+  awk '{print}' /var/log/syslog | tr "${kecil:0:26}${kapital:0:26}" "${kecil:$jam:26}${kapital:$jam:26}" > "/home/syauqi/Downloads/hasil_nomor_4/$nama.log"
+  ```
+  
+  tr sebagai manipulasi text, setiap huruf alfabet ditambahkan dengan jam
+  
