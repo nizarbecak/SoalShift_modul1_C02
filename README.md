@@ -154,5 +154,11 @@ kriteria berikut:
 4. Hasil dari pencarian tersebut dibatasi menjadi kurang dari 13 fields dengan cara memakai built-in variable NF < 13 kemudian dimasukkan ke file log dimana letaknya di /home/becak/modul1/syslog.txt
 5. Secara keseluruhan maka commandnya menjadi:
 
-![soal5_1](/image_modul1/soal5_1.png)
 ![soal5_2](/image_modul1/soal5_2.png)
+
+Hasil setelah di cat syslog.txt:
+![soal5_1](/image_modul1/soal5_1.png)
+
+Lalu untuk mengatur waktu eksekusi shell scriptnya digunakan crontab -e dengan format waktu:
+2-30/6 * * * * /home/becak/modul1/soal5.sh<br><br>
+Cara mengeceknya tinggal tunggu waktunya menunjukkan menit ke 2, 8, 4, 14, 20, 26
