@@ -24,9 +24,9 @@ Hint: Base64, Hexdump
     ((i++))
   done
   ```
-  i sebagai increament nama file yang akan disimpan nantinya
-  base64 untuk melakukan decode
-  xxd -r untuk merubah isi dari hex menjadi binary
+  i sebagai increament nama file yang akan disimpan nantinya<br>
+  base64 untuk melakukan decode<br>
+  xxd -r untuk merubah isi dari hex menjadi binary<br>
 
 - Menambah cronjob dengan format berikut
   ```
@@ -43,3 +43,36 @@ Laporan yang diminta berupa:
 2. Tentukan tiga product line yang memberikan penjualan(quantity) terbanyak pada soal poin a.
 3. Tentukan tiga product yang memberikan penjualan(quantity) terbanyak berdasarkan tiga product line yang didapatkan pada soal poin b.
 
+### Penyelesaian
+- Membuat file .sh dengan isi seperti berikut
+  ```
+  #!/bin/bash
+
+  awk -F "," `$7==2012 {a[$1] += $10} END {for (i in a) print a[i]","i}` /home/syauqi/Downloads/WA_Sales_Products_2012-14.csv | sort -r -nk1 | head -n 1
+
+  awk -F "," '$7==2012 && $1=="United States" {a[$4] += $10} END {for (i in a) print a[i]","i}' /home/syauqi/Downloads/WA_Sales_Products_2012-14.csv | sort -r -nk1 | head -n 3
+
+  awk -F "," '$7==2012 && $1=="United States" && $4=="Personal Accessories" {a[$6] += $10} END {for (i in a) print a[i]","i}' /home/syauqi/Downloads/WA_Sales_Products_2012-14.csv | sort -r -nk1 | head -n 3
+
+  awk -F "," '$7==2012 && $1=="United States" && $4=="Camping Equipment" {a[$6] += $10} END {for (i in a) print a[i]","i}' /home/syauqi/Downloads/WA_Sales_Products_2012-14.csv | sort -r -nk1 | head -n 3
+
+  awk -F "," '$7==2012 && $1=="United States" && $4=="Outdoor Protection" {a[$6] += $10} END {for (i in a) print a[i]","i}' /home/syauqi/Downloads/WA_Sales_Products_2012-14.csv | sort -r -nk1 | head -n 3
+  ```
+  
+  awk yang pertama untuk mengetahui negara mana yang memiliki penjualan terbanyak<br>
+  awk yang kedua untuk mengetahui product line berdasarkan hasil awk yang pertama<br>
+  awk yang ketiga sampai kelima untuk mengetaui product berdasarkan hasil awk yang kedua<br>
+  
+  ![soal2](/image_modul1/soal2.png)
+  
+## Soal 3
+Buatlah sebuah script bash yang dapat menghasilkan password secara acak
+sebanyak 12 karakter yang terdapat huruf besar, huruf kecil, dan angka. Password
+acak tersebut disimpan pada file berekstensi .txt dengan ketentuan pemberian nama
+sebagai berikut:
+1. Jika tidak ditemukan file password1.txt maka password acak tersebut disimpan pada file bernama password1.txt
+2. Jika file password1.txt sudah ada maka password acak baru akan disimpan pada file bernama password2.txt dan begitu seterusnya.
+3. Urutan nama file tidak boleh ada yang terlewatkan meski filenya dihapus.
+4. Password yang dihasilkan tidak boleh sama.
+
+### Penyelesaian
