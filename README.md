@@ -138,3 +138,21 @@ berikut:
   tr sebagai manipulasi text, setiap huruf alfabet ditambahkan dengan jam
   
   ![soal4](/image_modul1/soal4.png)
+
+## Soal 5
+Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi
+kriteria berikut:
+1. Tidak mengandung string “sudo”, tetapi mengandung string “cron”, serta buatlah pencarian stringnya tidak bersifat case sensitive, sehingga huruf kapital atau tidak, tidak menjadi masalah.
+2. Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
+3. Masukkan record tadi ke dalam file logs yang berada pada direktori /home/[user]/modul1.
+4. Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
+
+## Penyelesaian
+1. Syslog pada linux disimpan di direktori /var/log/syslog maka kita harus menampilkannya dengan command cat /var/log/syslog.
+2. Untuk memfilter dimana syslog yang disimpan harus tidak memiliki string “sudo” dan memiliki string “cron” maka digunakan awk ‘~!/sudo/ && ~/cron/ {print $0}’
+3. Syslog yang disimpan tidak bersifat case sensitif artinya tidak membedakan huruf kecil dan huruf besar, maka bisa menggunakan fungsi tolower(string_yang _akan_di lowercase) lalu stringnya dicocokkan dengan “sudo” dan “cron” tadi
+4. Hasil dari pencarian tersebut dibatasi menjadi kurang dari 13 fields dengan cara memakai built-in variable NF < 13 kemudian dimasukkan ke file log dimana letaknya di /home/becak/modul1/syslog.txt
+5. Secara keseluruhan maka commandnya menjadi:
+
+![soal5_1](/image_modul1/soal5_1.png)
+![soal5_2](/image_modul1/soal5_2.png)
