@@ -24,6 +24,9 @@ Hint: Base64, Hexdump
     ((i++))
   done
   ```
+  i sebagai increament nama file yang akan disimpan nantinya
+  base64 untuk melakukan decode
+  xxd -r untuk merubah isi dari hex menjadi binary
 
 - Menambah cronjob dengan format berikut
   ```
@@ -36,6 +39,7 @@ Hint: Base64, Hexdump
 Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta
 untuk memberikan laporan berdasarkan file WA_Sales_Products_2012-14.csv.
 Laporan yang diminta berupa:
-a. Tentukan negara dengan penjualan(quantity) terbanyak pada tahun 2012.
-b. Tentukan tiga product line yang memberikan penjualan(quantity) terbanyak pada soal poin a.
-c. Tentukan tiga product yang memberikan penjualan(quantity) terbanyak berdasarkan tiga product line yang didapatkan pada soal poin b.
+1. Tentukan negara dengan penjualan(quantity) terbanyak pada tahun 2012.
+2. Tentukan tiga product line yang memberikan penjualan(quantity) terbanyak pada soal poin a.
+3. Tentukan tiga product yang memberikan penjualan(quantity) terbanyak berdasarkan tiga product line yang didapatkan pada soal poin b.
+
