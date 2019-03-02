@@ -138,6 +138,24 @@ berikut:
   tr sebagai manipulasi text, setiap huruf alfabet ditambahkan dengan jam
   
   ![soal4](/image_modul1/soal4.png)
+  
+- Menambah crontab dengan format:
+  ```
+  0 * * * * /bin/bash /home/syauqi/Downloads/nomor4.sh
+  ```
+- Membuat file .sh yang berfungsi untuk melakukan decrypt
+  ```
+  #!/bin/bash
+
+  kecil="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+  kapital="ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+  jam=`date +"%H"`
+  nama=`date +"%H:%M %d-%m-%y"`
+
+  awk '{print}' /home/syauqi/Downloads/hasil_nomor_4/"$jam"* | tr "${kecil:$jam:26}${kapital:$jam:26}" "${kecil:0:26}${kapital:0:26}" > /home/syauqi/Downloads/hasil_nomor_4/"$nama"dec.log
+  ```
+  
 
 ## Soal 5
 Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi
